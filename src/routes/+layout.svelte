@@ -28,6 +28,7 @@
           <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="/veranstaltungen">Veranstaltungen</a></li>
           <li class="nav-item"><a class="nav-link" href="/lieblingsvenues">Meine Lieblings-Venues</a></li>
+          <li class="nav-item"><a class="nav-link" href="/veranstalter">Entdecke verschiedene Veranstalter</a></li>
         </ul>
       </div>
     </div>
