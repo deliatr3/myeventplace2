@@ -4,8 +4,7 @@
 </script>
 
 
-<h1>Veranstalterseite funktioniert!</h1>
-<p>Es wurden {organizers.length} Veranstalter geladen.</p>
+<h1>Entdecke verschiedene Veranstalter</h1>
 
 {#if organizers.length === 0}
   <p style="color: red;">⚠️ Es wurden keine Veranstalter gefunden.</p>
