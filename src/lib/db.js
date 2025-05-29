@@ -96,4 +96,19 @@ export async function deleteFavorite(id) {
 	}
 }
 
-export default { getEvents, getEvent, saveRegistration, getFavorites, saveFavorite, deleteFavorite }
+async function getOrganizers() {
+  let organizers = [];
+  try {
+    const collection = db.collection('organizers');
+    const query = {};
+    organizers = await collection.find(query).toArray();
+    organizers.forEach(organizer => {
+      organizer._id = organizer._id.toString();
+    });
+  } catch (error) {
+    console.error('Fehler beim Laden der Veranstalter:', error);
+  }
+  return organizers;
+}
+
+export default { getEvents, getEvent, saveRegistration, getFavorites, saveFavorite, deleteFavorite, getOrganizers }
