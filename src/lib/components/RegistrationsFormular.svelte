@@ -56,7 +56,7 @@
                 required
             />
             <label class="form-check-label" for="verbindlich">
-                Ich melde mich verbindlich für den Event an
+                Ich melde mich verbindlich für den Event an*
             </label>
         </div>
 
