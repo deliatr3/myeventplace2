@@ -12,16 +12,24 @@ export const actions = {
 	add: async ({ request }) => {
 		const form = await request.formData();
 
-		//Neuer Favorit mit Name, Adresse und aktuellem Timestamp
-		await db.saveFavorite({
-			name: form.get('name'),
-			address: form.get('address'),
-			timestamp: new Date()
-		});
+		try {
+			// Neuer Favorit mit Name, Adresse und aktuellem Timestamp
+			await db.saveFavorite({
+				name: form.get('name'),
+				address: form.get('address'),
+				timestamp: new Date()
+			});
+
+			return { success: true }; // ✅ Rückmeldung bei Erfolg
+		} catch (err) {
+			return { success: false, error: 'Speichern fehlgeschlagen.' }; // ⚠️ Fehlerbehandlung
+		}
 	},
+
 	// Löscht einen Venue anhand seiner ID aus der Favoritenliste
 	delete: async ({ request }) => {
 		const form = await request.formData();
 		await db.deleteFavorite(form.get('id'));
 	}
 };
+
