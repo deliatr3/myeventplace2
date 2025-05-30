@@ -21,7 +21,7 @@
     return organizers.filter((o) => {
       const matchOrt = selectedOrt === "Alle" || o.bio.includes(selectedOrt);
       const matchText = Object.values(o).some((v) =>
-        String(v).toLowerCase().includes(searchQuery.toLowerCase()),
+        String(v).toLowerCase().includes(searchQuery.toLowerCase())
       );
       return matchOrt && matchText;
     });
@@ -30,7 +30,7 @@
 
 <h1>Entdecke verschiedene Veranstalter</h1>
 
-<!-- Filterbereich -->
+<!-- 🔍 Filterbereich -->
 <div class="container mb-4">
   <div class="d-flex flex-wrap gap-2 mb-3">
     {#each orte as ort}
@@ -52,12 +52,13 @@
   />
 </div>
 
+<!-- 🔽 Veranstalter-Liste -->
 {#if organizers.length === 0}
   <p style="color: red;">⚠️ Es wurden keine Veranstalter gefunden.</p>
 {:else}
   <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem;">
     {#each filteredOrganizers() as o}
-      <div style="border: 1px solid #ccc; padding: 1rem; width: 240px;">
+      <div style="border: 1px solid #ccc; padding: 1rem; width: 240px; display: flex; flex-direction: column;">
         <img
           src={`/images/${o.bild ?? "default.jpg"}`}
           alt={o.name}
@@ -66,12 +67,15 @@
         <h3>{o.name}</h3>
         <p>{o.bio}</p>
         <small>{o.email}</small>
-        <!-- ⬇️ Hier fügst du die Buttons ein -->
-        <div class="d-grid gap-2 mt-3">
+
+        <!-- 📌 Button ganz unten -->
+        <div style="margin-top: auto;">
           <a
             href={`/veranstalter/${o._id}`}
-            class="btn btn-sm btn-outline-primary">Details anzeigen</a
+            class="btn btn-sm btn-outline-primary w-100"
           >
+            Details anzeigen
+          </a>
         </div>
       </div>
     {/each}
