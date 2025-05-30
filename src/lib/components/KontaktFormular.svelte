@@ -1,11 +1,10 @@
 <script>
-	let { email } = $props(); // Veranstalter-E-Mail
-	let form = $state();
+	let { email, form = {} } = $props(); // Veranstalter-E-Mail
 </script>
 
 <!--  Kontaktformular -->
 <h2 class="mt-5">Kontakt aufnehmen</h2>
-<form method="POST" use:enhance={(e) => (form = e)}>
+<form method="POST" use:enhance>
 	<input type="hidden" name="to" value={email} />
 
 	<!-- Absendername -->

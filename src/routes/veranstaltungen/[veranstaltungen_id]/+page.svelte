@@ -17,7 +17,7 @@
   </article>
 
   <!-- Eingebettetes Anmeldeformular -->
-  <RegistrationsFormular eventId={event._id} />
+  <RegistrationsFormular eventId={event._id} form={form}/>
 
 {:else}
   <!-- Fehleranzeige, falls Event nicht existiert -->

@@ -2,6 +2,8 @@
     let { eventId, form } = $props();
 </script>
 
+<input type="hidden" name="eventId" value={eventId} />
+
 <!-- Formular zur Event-Anmeldung -->
 <form method="POST" action="?/register" use:enhance>
     <div class="mb-3">

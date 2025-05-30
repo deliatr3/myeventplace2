@@ -1,5 +1,5 @@
 <script>
-	let { data } = $props();
+	let { data, form } = $props();
 	let organizer = data.organizer;
 	import KontaktFormular from "$lib/components/KontaktFormular.svelte"; //Import der Komponente Kontaktformular
 </script>
@@ -23,7 +23,7 @@
 		</p>
 
 		<!-- Eingebundenes Kontaktformular -->
-		<KontaktFormular email={organizer.email} />
+		<KontaktFormular email={organizer.email} form={form} />
 	</section>
 
 	<!-- Wenn kein Veranstalter gefunden wurde -->
