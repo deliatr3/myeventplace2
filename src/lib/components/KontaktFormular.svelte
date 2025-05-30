@@ -4,7 +4,7 @@
 
 
 <h2 class="mt-5">Kontakt aufnehmen</h2>
-<form method="POST" action="/kontakt" use:enhance>
+ <form method="POST" use:enhance>
 	<input type="hidden" name="to" value={email} />
 
 	<div class="mb-3">
