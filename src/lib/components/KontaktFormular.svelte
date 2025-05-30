@@ -1,11 +1,12 @@
 <script>
 	let { email } = $props(); // Veranstalter-E-Mail
+    let form = $state();
 </script>
 
 
 <h2 class="mt-5">Kontakt aufnehmen</h2>
- <form method="POST" use:enhance>
-	<input type="hidden" name="to" value={email} />
+ <form method="POST" use:enhance={(e) => (form = e)}>
+    	<input type="hidden" name="to" value={email} />
 
 	<div class="mb-3">
 		<label for="name">Dein Name*</label>
@@ -24,4 +25,17 @@
 
 	<button class="btn btn-pink">Nachricht senden</button>
 </form>
+
+{#if form?.success}
+	<div class="alert alert-success mt-3">
+		Deine Nachricht wurde erfolgreich gesendet!
+	</div>
+{:else if form?.error}
+	<div class="alert alert-danger mt-3">
+		Fehler: {form.result.error}
+	</div>
+{/if}
+
+
+
 

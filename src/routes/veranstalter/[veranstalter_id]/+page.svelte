@@ -1,7 +1,6 @@
 <script>
 	let { data } = $props();
 	let organizer = data.organizer;
-
 	import KontaktFormular from '$lib/components/KontaktFormular.svelte';
 </script>
 
