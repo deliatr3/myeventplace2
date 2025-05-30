@@ -111,4 +111,31 @@ async function getOrganizers() {
   return organizers;
 }
 
-export default { getEvents, getEvent, saveRegistration, getFavorites, saveFavorite, deleteFavorite, getOrganizers }
+async function getOrganizer(id) {
+	try {
+		const collection = db.collection("organizers");
+		const result = await collection.findOne({ _id: new ObjectId(id) });
+		if (result) result._id = result._id.toString();
+		return result;
+	} catch (err) {
+		console.error("Fehler beim Laden des Veranstalters:", err);
+		return null;
+	}
+}
+
+async function saveMessage(message) {
+	try {
+		const collection = db.collection('messages');
+		await collection.insertOne({
+			...message,
+			timestamp: new Date()
+		});
+	} catch (error) {
+		console.error('Fehler beim Speichern der Nachricht:', error);
+		throw error;
+	}
+}
+
+
+
+export default { getEvents, getEvent, saveRegistration, getFavorites, saveFavorite, deleteFavorite, getOrganizers, getOrganizer, saveMessage }
