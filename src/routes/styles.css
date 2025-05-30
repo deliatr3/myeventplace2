@@ -1,11 +1,6 @@
-
-/* Eigene Pink-Utility für die Navbar */
-.bg-pink {
-  background-color: #eb7cb0 !important;
-  /* Bootstrap-Pink */
-}
-
-/* 1. Grundreset bleibt gleich */
+/* ---------------------------------------------
+   RESET UND BASISSTYLES
+---------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -14,7 +9,6 @@
   padding: 0;
 }
 
-/* 2. Body mit System-Font-Stack */
 body {
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -24,14 +18,26 @@ body {
   line-height: 1.6;
 }
 
-/* 3. Navbar-Brand etwas größer */
+h1,
+h2 {
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+/* ---------------------------------------------
+   NAVBAR STYLES
+---------------------------------------------- */
+.bg-pink {
+  background-color: #eb7cb0 !important;
+  /* Eigene Bootstrap-Pink-Variante */
+}
+
 .navbar-brand {
   font-weight: 600;
   font-size: 1.5rem;
-  color: #eb7cb0
+  color: #eb7cb0;
 }
 
-/* 4. Nav-Links */
 .navbar-nav .nav-link {
   font-weight: 500;
   padding: 0.5rem 1rem;
@@ -42,30 +48,9 @@ body {
   border-radius: 0.25rem;
 }
 
-/* 5. Container-Abstände */
-.container {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-/* 6. Überschriften */
-h1,
-h2 {
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-/* 7. Hero-Image Styles */
-.hero-img {
-  max-width: 100%;
-  width: 500px;
-  height: auto;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 2rem;
-}
-
-/* Globale Button-Färbung */
+/* ---------------------------------------------
+   BUTTONS (inkl. Hover / Focus / Active / Outline)
+---------------------------------------------- */
 button,
 .btn,
 button.rounded-button {
@@ -79,19 +64,15 @@ button.rounded-button {
   cursor: pointer;
 }
 
-
-/* Hover- & Focus-Zustand */
 button:hover,
 button:focus,
 .btn:hover,
 .btn:focus {
   background-color: #eb7cb0 !important;
-  /* etwas dunkleres Pink */
   border-color: #eb7cb0 !important;
   color: #fff !important;
 }
 
-/* Active/Pressed-Zustand */
 button:active,
 .btn:active,
 button.active,
@@ -101,7 +82,6 @@ button.active,
   color: #fff !important;
 }
 
-/* Optional: Outline-Buttons ebenfalls anpassen */
 .btn-outline {
   color: #eb7cb0 !important;
   border-color: #eb7cb0 !important;
@@ -113,6 +93,36 @@ button.active,
   color: #fff !important;
 }
 
+/* Visuelles Feedback für manuelle .active-Klasse */
+button.active {
+  background-color: #dc71a0;
+  color: white;
+  border-color: #dc71a0;
+}
+
+/* ---------------------------------------------
+   CONTAINER UND LAYOUT
+---------------------------------------------- */
+.container {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* ---------------------------------------------
+   HERO IMAGE (z. B. auf der Startseite)
+---------------------------------------------- */
+.hero-img {
+  max-width: 100%;
+  width: 500px;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+/* ---------------------------------------------
+   VENUE-KARTEN
+---------------------------------------------- */
 .venue-card {
   display: flex;
   justify-content: space-between;
@@ -131,6 +141,9 @@ button.active,
   background-color: #fff0f6;
 }
 
+/* ---------------------------------------------
+   FORMULARELEMENTE
+---------------------------------------------- */
 .form-row {
   display: flex;
   flex-wrap: wrap;
@@ -150,18 +163,13 @@ button.active,
   min-width: 150px;
 }
 
-
 .form-row textarea {
-  height: 2.5rem;         /* passt zur input-Höhe */
-  resize: none;           /* verhindert Ziehen */
-  margin: 0;              /* gleicht mögliche Abstände aus */
-  padding-top: 0.45rem;   /* optisch mittig */
+  height: 2.5rem;
+  /* passt zur input-Höhe */
+  resize: none;
+  /* verhindert Ziehen */
+  margin: 0;
+  /* gleicht mögliche Abstände aus */
+  padding-top: 0.45rem;
+  /* optisch mittig */
 }
-
-
-button.active {
-	background-color: #dc71a0;
-	color: white;
-	border-color: #dc71a0;
-}
-

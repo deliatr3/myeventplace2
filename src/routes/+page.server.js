@@ -1,6 +1,7 @@
 import db from '$lib/db.js';
 
-export async function load() {
+//ladet alle Events aus der MongoDB Datenbank
+export async function load() { 
     return {
         events: await db.getEvents()
 
