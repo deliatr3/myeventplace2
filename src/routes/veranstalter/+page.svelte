@@ -1,16 +1,63 @@
 <script>
   let { data } = $props();
-	let organizers = data.organizers;
+  let organizers = data.organizers;
+
+  let selectedOrt = $state('Alle');
+  let searchQuery = $state('');
+
+  // Orte extrahieren aus Beschreibung
+  let orte = $derived.by(() => {
+    const unique = new Set(
+      organizers.map(o => {
+        const match = o.bio.match(/in ([A-ZÄÖÜa-zäöüß\s]+?) mit/);
+        return match?.[1] ?? 'Unbekannt';
+      })
+    );
+    return ['Alle', ...Array.from(unique)];
+  });
+
+  // Gefilterte Veranstalter
+  function filteredOrganizers() {
+    return organizers.filter(o => {
+      const matchOrt =
+        selectedOrt === 'Alle' || o.bio.includes(selectedOrt);
+      const matchText = Object.values(o).some(v =>
+        String(v).toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      return matchOrt && matchText;
+    });
+  }
 </script>
 
-
 <h1>Entdecke verschiedene Veranstalter</h1>
+
+<!-- Filterbereich -->
+<div class="container mb-4">
+  <div class="d-flex flex-wrap gap-2 mb-3">
+    {#each orte as ort}
+      <button
+        type="button"
+        class={`btn btn-outline-primary ${selectedOrt === ort ? 'active' : ''}`}
+        onclick={() => selectedOrt = ort}
+      >
+        {ort}
+      </button>
+    {/each}
+  </div>
+
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Suche nach Name, Ort, Bio …"
+    bind:value={searchQuery}
+  />
+</div>
 
 {#if organizers.length === 0}
   <p style="color: red;">⚠️ Es wurden keine Veranstalter gefunden.</p>
 {:else}
   <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem;">
-    {#each organizers as o}
+    {#each filteredOrganizers() as o}
       <div style="border: 1px solid #ccc; padding: 1rem; width: 240px;">
         <img src={`/images/${o.bild ?? 'default.jpg'}`} alt={o.name} style="width: 100%; height: auto;" />
         <h3>{o.name}</h3>
